@@ -4,7 +4,7 @@ import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import '../globals.css';
 import {Header} from '@/components/Header';
-import {routing, type Locale} from '@/i18n/routing';
+import {isLocale, routing} from '@/i18n/routing';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ste-mouawad.com';
 
@@ -15,9 +15,14 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params
 }: {
-  params: Promise<{locale: Locale}>;
+  params: Promise<{locale: string}>;
 }): Promise<Metadata> {
   const {locale} = await params;
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
   const t = await getTranslations({locale, namespace: 'meta'});
   const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
 
@@ -50,11 +55,11 @@ export default async function LocaleLayout({
   params
 }: {
   children: React.ReactNode;
-  params: Promise<{locale: Locale}>;
+  params: Promise<{locale: string}>;
 }) {
   const {locale} = await params;
 
-  if (!routing.locales.includes(locale)) {
+  if (!isLocale(locale)) {
     notFound();
   }
 

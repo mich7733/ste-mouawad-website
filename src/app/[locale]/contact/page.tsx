@@ -1,14 +1,25 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
-import type {Locale} from '@/i18n/routing';
+import {notFound} from 'next/navigation';
+import {isLocale} from '@/i18n/routing';
 import {getPageMetadata} from '@/lib/seo';
 
-export async function generateMetadata({params}: {params: Promise<{locale: Locale}>}) {
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
   return getPageMetadata(locale, '/contact', 'contact');
 }
 
-export default async function ContactPage({params}: {params: Promise<{locale: Locale}>}) {
+export default async function ContactPage({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
   setRequestLocale(locale);
   const t = await getTranslations({locale, namespace: 'contact'});
 

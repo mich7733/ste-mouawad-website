@@ -1,14 +1,25 @@
 import {getTranslations, setRequestLocale} from 'next-intl/server';
-import type {Locale} from '@/i18n/routing';
+import {notFound} from 'next/navigation';
+import {isLocale} from '@/i18n/routing';
 import {getPageMetadata} from '@/lib/seo';
 
-export async function generateMetadata({params}: {params: Promise<{locale: Locale}>}) {
+export async function generateMetadata({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
   return getPageMetadata(locale, '/about', 'about');
 }
 
-export default async function AboutPage({params}: {params: Promise<{locale: Locale}>}) {
+export default async function AboutPage({params}: {params: Promise<{locale: string}>}) {
   const {locale} = await params;
+
+  if (!isLocale(locale)) {
+    notFound();
+  }
+
   setRequestLocale(locale);
   const t = await getTranslations({locale, namespace: 'about'});
 
