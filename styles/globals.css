@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #171411;
+  background: #f8f5ef;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-inter), Arial, sans-serif;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(199, 54, 54, 0.05), transparent 25rem),
+    linear-gradient(180deg, #fbfaf7 0%, #f6f0e8 100%);
+}
+
+[dir='rtl'] body {
+  font-family: var(--font-inter), 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+[dir='rtl'] .font-display {
+  font-family: var(--font-inter), 'Segoe UI', Tahoma, Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.stone-paper {
+  background:
+    linear-gradient(110deg, rgba(255, 255, 255, 0.82), rgba(246, 239, 229, 0.9)),
+    repeating-linear-gradient(155deg, rgba(42, 31, 22, 0.045) 0 1px, transparent 1px 38px),
+    radial-gradient(circle at 18% 30%, rgba(194, 172, 142, 0.22), transparent 18rem),
+    #f8f5ef;
+}
+
+.fade-in {
+  animation: fadeIn 900ms ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-in {
+    animation: none;
+  }
+}

@@ -1,86 +1,93 @@
 import type {Metadata} from 'next';
 import {NextIntlClientProvider} from 'next-intl';
-import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
+import {getMessages, getTranslations} from 'next-intl/server';
+import {Inter, Playfair_Display} from 'next/font/google';
 import {notFound} from 'next/navigation';
-import '../globals.css';
-import {Header} from '@/components/Header';
-import {isLocale, routing} from '@/i18n/routing';
+import type {ReactNode} from 'react';
+import {routing, type Locale} from '@/i18n/routing';
+import '../../../styles/globals.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.ste-mouawad.com';
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap'
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
+  display: 'swap'
+});
+
+type Props = {
+  children: ReactNode;
+  params: Promise<{locale: Locale}>;
+};
+
+export async function generateMetadata({params}: Props): Promise<Metadata> {
+  const {locale} = await params;
+  const t = await getTranslations({locale, namespace: 'meta'});
+  const canonical = `https://stemouawad.com/${locale}`;
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    metadataBase: new URL('https://stemouawad.com'),
+    alternates: {
+      canonical,
+      languages: {
+        en: '/en',
+        ar: '/ar'
+      }
+    },
+    keywords: [
+      'STE. MOUAWAD',
+      'شركة معوض',
+      'Marble Lebanon',
+      'Church Marble Lebanon',
+      'Artistic Marble Work',
+      'Luxury marble atelier',
+      'Church altars Lebanon',
+      'Marble sculptures Lebanon',
+      'Fireplaces Lebanon'
+    ],
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: canonical,
+      siteName: 'STE. MOUAWAD',
+      locale,
+      type: 'website',
+      images: [
+        {
+          url: '/images/hero/church-interior.webp',
+          width: 1200,
+          height: 630,
+          alt: 'STE. MOUAWAD church marble craftsmanship'
+        }
+      ]
+    }
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
 }
 
-export async function generateMetadata({
-  params
-}: {
-  params: Promise<{locale: string}>;
-}): Promise<Metadata> {
+export default async function LocaleLayout({children, params}: Props) {
   const {locale} = await params;
 
-  if (!isLocale(locale)) {
+  if (!routing.locales.includes(locale)) {
     notFound();
   }
 
-  const t = await getTranslations({locale, namespace: 'meta'});
-  const prefix = locale === routing.defaultLocale ? '' : `/${locale}`;
-
-  return {
-    metadataBase: new URL(siteUrl),
-    title: t('title'),
-    description: t('description'),
-    keywords: t('keywords'),
-    alternates: {
-      canonical: `${siteUrl}${prefix || '/'}`,
-      languages: {
-        en: `${siteUrl}/`,
-        ar: `${siteUrl}/ar`
-      }
-    },
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      url: `${siteUrl}${prefix || '/'}`,
-      siteName: t('siteName'),
-      locale: locale === 'ar' ? 'ar_LB' : 'en_US',
-      alternateLocale: locale === 'ar' ? 'en_US' : 'ar_LB',
-      type: 'website'
-    }
-  };
-}
-
-export default async function LocaleLayout({
-  children,
-  params
-}: {
-  children: React.ReactNode;
-  params: Promise<{locale: string}>;
-}) {
-  const {locale} = await params;
-
-  if (!isLocale(locale)) {
-    notFound();
-  }
-
-  setRequestLocale(locale);
   const messages = await getMessages();
-  const meta = await getTranslations({locale, namespace: 'meta'});
+  const dir = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={locale === 'ar' ? 'rtl' : 'ltr'}>
+    <html lang={locale} dir={dir} className={`${inter.variable} ${playfair.variable}`}>
       <body>
-        <NextIntlClientProvider messages={messages}>
-          <div className="site-shell">
-            <Header locale={locale} />
-            {children}
-            <footer className="footer">
-              <div className="footer-inner">
-                &copy; {new Date().getFullYear()} {meta('siteName')}.
-              </div>
-            </footer>
-          </div>
-        </NextIntlClientProvider>
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
   );

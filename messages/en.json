@@ -1,63 +1,75 @@
 {
   "meta": {
-    "siteName": "STE. MOUAWAD",
-    "title": "STE. MOUAWAD | Natural Stone Art Since 1967",
-    "description": "STE. MOUAWAD transforms natural stone into churches, altars, sculptures, fireplaces, and architectural masterpieces across Lebanon and beyond.",
-    "keywords": "STE. MOUAWAD, natural stone, stone carving, churches, altars, sculptures, fireplaces, Lebanon"
+    "title": "STE. MOUAWAD | Enterprise Artistique",
+    "description": "Luxury marble craftsmanship, sacred interiors, altars, sculptures, fireplaces, and bespoke stone execution in Lebanon since 1967."
   },
   "nav": {
-    "home": "Home",
-    "about": "About",
-    "portfolio": "Portfolio",
+    "story": "Our Story",
     "projects": "Projects",
+    "instagram": "Instagram",
+    "facebook": "Facebook",
     "contact": "Contact",
+    "whatsapp": "WhatsApp Us",
     "language": "العربية"
   },
   "hero": {
-    "eyebrow": "Natural Stone Atelier",
-    "title": "Crafting Stone Into Timeless Art Since 1967",
-    "description": "For over five decades, STE. MOUAWAD has transformed natural stone into churches, altars, sculptures, fireplaces, and architectural masterpieces across Lebanon and beyond.",
-    "portfolio": "Explore Portfolio",
-    "contact": "Contact Us"
+    "eyebrow": "",
+    "title": "Crafting Sacred Spaces Since 1967",
+    "subtitle": "From design to execution, transforming natural stone into timeless works of art.",
+    "work": "View Our Work",
+    "whatsapp": "WhatsApp Us"
   },
-  "home": {
-    "sectionTitle": "From Design to Execution",
-    "sectionText": "Every commission is shaped with careful drawing, precise material selection, and hand-finished detail.",
-    "services": {
-      "churches": "Churches and sacred interiors",
-      "altars": "Altars and liturgical stonework",
-      "sculptures": "Sculptures and carved details",
-      "fireplaces": "Fireplaces and architectural features"
-    }
-  },
-  "about": {
-    "title": "A Family Stone Atelier Since 1967",
-    "metaDescription": "Learn about STE. MOUAWAD, a Lebanese family atelier shaping natural stone into sacred and architectural works since 1967.",
-    "intro": "STE. MOUAWAD brings together traditional craftsmanship, architectural sensitivity, and deep respect for natural stone.",
-    "body": "From concept sketches to final installation, the atelier works closely with architects, designers, parishes, and private clients to create enduring pieces with character and presence."
-  },
-  "portfolio": {
-    "title": "Portfolio",
-    "metaDescription": "Explore STE. MOUAWAD's portfolio of churches, altars, sculptures, fireplaces, and custom natural stonework.",
-    "intro": "A selection of stonework spanning sacred spaces, residences, restoration details, and custom architectural commissions."
+  "heritage": {
+    "eyebrow": "A Legacy of Faith & Artistry",
+    "title": "A Family Legacy in Stone",
+    "body1": "Since 1967, STE. MOUAWAD has specialized in churches, altars, sculptures, fireplaces, and custom marble creations throughout Lebanon and beyond.",
+    "body2": "Every project combines artistic vision, technical expertise, and generations of craftsmanship.",
+    "signature": "Ste. Mouawad"
   },
   "projects": {
-    "title": "Projects",
-    "metaDescription": "Browse current and featured STE. MOUAWAD natural stone projects managed through the website content folder.",
-    "intro": "Manage projects from the admin content folder by updating JSON entries and adding images.",
-    "empty": "Project entries will appear here once they are added to admin-content/projects.json."
+    "title": "Featured Projects",
+    "all": "All",
+    "more": "View More Projects",
+    "churches": "Churches",
+    "altars": "Altars & Choirs",
+    "sculptures": "Sculptures",
+    "fireplaces": "Fireplaces"
   },
-  "contact": {
-    "title": "Contact Us",
-    "metaDescription": "Contact STE. MOUAWAD for natural stone commissions, restoration work, sacred interiors, sculptures, and architectural features.",
-    "intro": "Tell us about your stonework project, restoration, or custom commission.",
-    "name": "Name",
-    "email": "Email",
-    "message": "Message",
-    "submit": "Send Message",
-    "details": "Based in Lebanon. Available for projects locally and abroad."
+  "process": {
+    "title": "From Design to Execution",
+    "design": "Design",
+    "drawings": "Technical Drawings",
+    "stone": "Stone Selection",
+    "craft": "Craftsmanship",
+    "install": "Installation"
+  },
+  "instagram": {
+    "title": "Follow Our Latest Work",
+    "text": "Discover our recent projects, craftsmanship and behind-the-scenes moments.",
+    "button": "Visit Instagram",
+    "handle": "@ste.mouawad",
+    "caption": "Follow on Instagram"
+  },
+  "trust": {
+    "sinceLabel": "Since",
+    "sinceValue": "1967",
+    "sinceText": "Over 55 years of excellence",
+    "projectsValue": "Hundreds",
+    "projectsLabel": "Of completed projects",
+    "lebanonValue": "Across Lebanon",
+    "lebanonLabel": "And beyond",
+    "craftValue": "Generations",
+    "craftLabel": "Of craftsmanship"
+  },
+  "cta": {
+    "title": "Let's Create Something Timeless",
+    "text": "Whether you're restoring a church, designing a custom fireplace, or bringing a unique artistic vision to life, we're ready to help.",
+    "whatsapp": "WhatsApp Us",
+    "instagram": "Instagram",
+    "facebook": "Facebook"
   },
   "footer": {
-    "copyright": "All rights reserved."
+    "copyright": "© 2024 STE. MOUAWAD. All Rights Reserved.",
+    "crafted": "Handcrafted in Lebanon"
   }
 }
